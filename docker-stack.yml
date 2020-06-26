@@ -13,6 +13,8 @@ volumes:
     um_logs:
     um_licence:
     um_users:
+    pg_dumps:
+    new_structures:
 
 secrets:
     postgrest_password:
@@ -264,3 +266,17 @@ services:
             - sauber-network
         ports:
             - "9990:80"
+
+    db_update:
+        image: "sauber_db_update"
+        networks:
+            - sauber-network
+        volumes:
+            - ./db_update/pg_dumps:/pg_dumps
+            - ./db_update/new_structures:/new_structures
+        secrets:
+            - postgres_init_password
+        environment:
+            - POSTGRES_INIT_PASSWORD_FILE=/run/secrets/postgres_init_password
+        deploy:
+            replicas: 0

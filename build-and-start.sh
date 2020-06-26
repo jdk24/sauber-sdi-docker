@@ -14,6 +14,8 @@ docker build --rm -f "um_ol_demo/Webmap.dockerfile" -t sauber_um_ol_demo:latest 
 
 docker build --rm -f "um-js-demo-client/Dockerfile" -t sauber_um_js_demo:latest "um-js-demo-client"
 
+docker build --rm -f "db_update/Dockerfile" -t sauber_db_update:latest "sauber_db_update"
+
 docker stack deploy -c docker-stack.yml sauber-stack
 
 CHANNELS=("HeartbeatChannel raster_data station_data") ## Add additional channels to be created

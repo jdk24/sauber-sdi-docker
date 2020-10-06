@@ -284,8 +284,8 @@ services:
         networks:
             - sauber-network
         volumes:
-            - ./db_update/pg_dumps:/pg_dumps
-            - ./db_update/new_structures:/new_structures
+            - ./db_update/db_structure:/db_structure
+            - ./db_update/db_data:/db_data
         secrets:
             - postgres_init_password
         environment:
